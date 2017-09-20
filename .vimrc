@@ -42,17 +42,17 @@ Plug 'scrooloose/syntastic'
 Plug 'Yggdroot/indentLine'
 Plug 'avelino/vim-bootstrap-updater'
 Plug 'sheerun/vim-polyglot'
-Plug 'NLKNguyen/pipe.vim' "required
-Plug 'NLKNguyen/pipe-mysql.vim'
-Plug 'vim-scripts/dbext.vim'
 Plug 'ludovicchabant/vim-gutentags'
-Plug 'nanotech/jellybeans.vim'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'arnaud-lb/vim-php-namespace'
-Plug 'KeitaNakamura/neodark.vim'
-Plug 'tyrannicaltoucan/vim-quantum'
-Plug 'morhetz/gruvbox'
-
+Plug 'godlygeek/csapprox'
+Plug 'joshdick/onedark.vim'
+Plug 'dikiaap/minimalist'
+Plug 'dracula/vim'
+Plug 'rcabralc/monokai-airline.vim'
+Plug 'NLKNguyen/papercolor-theme'
+Plug 'nanotech/jellybeans.vim'
+Plug 'ConradIrwin/vim-bracketed-paste'
 let g:make = 'gmake'
 if exists('make')
         let g:make = 'make'
@@ -74,9 +74,8 @@ if v:version >= 704
 endif
 
 Plug 'honza/vim-snippets'
-
-"" Color
-" Plug 'crusoexia/vim-monokai'
+Plug 'crusoexia/vim-monokai'
+Plug 'raphamorim/lucario'
 
 "*****************************************************************************
 "" Custom bundles
@@ -122,7 +121,7 @@ set shiftwidth=4
 set expandtab
 
 "" Map leader to ,
-let mapleader=','
+let mapleader=' '
 
 "" Enable hidden buffers
 set hidden
@@ -141,14 +140,12 @@ set fileformats=unix,dos,mac
 set showcmd
 set shell=/usr/bin/zsh
 
-" colorscheme jellybeans
-" colorscheme neodark
-" colorscheme gruvbox
-" colorscheme quantum
-" colorscheme vim-monokai
-colorscheme monokai
 let g:molokai_original = 1
-" set background=dark
+set background=dark
+colorscheme onedark
+" colorscheme monokai
+let g:airline_theme = 'onedark'
+" let g:airline_theme = 'papercolor'
 
 " session management
 let g:session_directory = "~/.vim/session"
@@ -165,7 +162,7 @@ set number
 
 let no_buffers_menu=1
 if !exists('g:not_finish_vimplug')
-  " colorscheme molokai
+  "colorscheme molokai
 endif
 
 set mousemodel=popup
@@ -174,6 +171,7 @@ set guioptions=egmrti
 set gfn=Monospace\ 10
 
 if has("gui_running")
+    colorscheme material-theme
   if has("gui_mac") || has("gui_macvim")
     set guifont=Menlo:h12
     set transparency=7
@@ -224,7 +222,6 @@ if exists("*fugitive#statusline")
 endif
 
 " vim-airline
-let g:airline_theme = 'powerlineish'
 let g:airline#extensions#syntastic#enabled = 1
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
@@ -245,6 +242,7 @@ cnoreabbrev WQ wq
 cnoreabbrev W w
 cnoreabbrev Q q
 cnoreabbrev Qall qall
+imap jj <Esc>
 
 "" NERDTree configuration
 let g:NERDTreeChDirMode=2
@@ -533,5 +531,11 @@ endif
 :set guioptions-=r  "remove right-hand scroll bar
 :set guioptions-=L  "remove left-hand scroll bar
 
-set guioptions=Ace 
+set guioptions=Ace
 highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
+
+set pastetoggle=<F5>
+set guioptions-=r  " no scrollbar on the right
+set guioptions-=l  " no scrollbar on the left
+set guioptions-=m  " no menu
+set guioptions-=T  " no toolbar
